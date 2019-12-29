@@ -264,7 +264,7 @@ func claimMessage(ctx context.Context, c *consumer, msg *sarama.ConsumerMessage)
 	}
 
 	ctxCh = correlation.ContextWithID(ctxCh, corID)
-	ctxCh = log.WithContext(ctxCh, log.Sub(map[string]interface{}{"correlationID": corID}))
+	ctxCh = log.WithContext(ctxCh, log.Sub(map[string]interface{}{correlation.ID: corID}))
 
 	return &message{
 		ctx:  ctxCh,
